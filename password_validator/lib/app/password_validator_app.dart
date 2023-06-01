@@ -10,6 +10,10 @@ class PasswordValidatorApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          color: Colors.purple,
+          foregroundColor: Colors.white,
+        )
       ),
       home: const HomeView(),
     );
