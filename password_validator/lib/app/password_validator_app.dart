@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:password_validator/app/home/view/home_view.dart';
+import 'package:password_validator/app/shared/theme/app_theme.dart';
 
 class PasswordValidatorApp extends StatelessWidget {
   const PasswordValidatorApp({super.key});
@@ -8,13 +9,7 @@ class PasswordValidatorApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          color: Colors.purple,
-          foregroundColor: Colors.white,
-        )
-      ),
+      theme: appTheme,
       home: const HomeView(),
     );
   }
