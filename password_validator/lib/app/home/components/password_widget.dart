@@ -2,25 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:injector/injector.dart';
 import 'package:password_validator/app/home/controller/home_controller.dart';
-import 'package:password_validator/app/shared/utils/password_validate.dart';
+import 'package:password_validator/app/shared/utils/password_validation.dart';
 
 class PasswordWidget extends StatefulWidget {
   const PasswordWidget({
     required this.textPassword,
     required this.editFunction,
     required this.deleteFunction,
+    required this.controller,
     super.key,
   });
   final String textPassword;
   final Function() editFunction;
   final Function() deleteFunction;
+  final HomeController controller;
 
   @override
   State<PasswordWidget> createState() => _PasswordWidgetState();
 }
 
 class _PasswordWidgetState extends State<PasswordWidget> {
-  HomeController controller = Injector.appInstance.get<HomeController>();
+  late HomeController controller = widget.controller;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
           child: Row(
             children: [
               Container(
-                color: passwordValidate(password: widget.textPassword)
+                color: validateAllCriteria(widget.textPassword)
                     ? colorScheme.primary
                     : colorScheme.secondary,
                 width: 10,
@@ -66,7 +68,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: widget.editFunction,
                 child: Container(
                   height: 50,
                   width: 50,
@@ -80,7 +82,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: widget.deleteFunction,
                 child: Container(
                   height: 50,
                   width: 50,

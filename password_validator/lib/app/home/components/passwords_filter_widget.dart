@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:injector/injector.dart';
 import 'package:password_validator/app/home/controller/home_controller.dart';
 import 'package:password_validator/app/home/enum/filter_list_by.dart';
 
 class PasswordsFilterWidget extends StatefulWidget {
-  const PasswordsFilterWidget({required this.isSelected, super.key});
+  const PasswordsFilterWidget({
+    required this.isSelected,
+    required this.controller,
+    super.key,
+  });
   final List<bool> isSelected;
+  final HomeController controller;
 
   @override
   State<PasswordsFilterWidget> createState() => _PasswordsFilterWidgetState();
 }
 
 class _PasswordsFilterWidgetState extends State<PasswordsFilterWidget> {
-  HomeController controller = Injector.appInstance.get<HomeController>();
+  late HomeController controller = widget.controller;
 
   @override
   Widget build(BuildContext context) {

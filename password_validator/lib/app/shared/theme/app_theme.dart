@@ -18,7 +18,21 @@ ThemeData appTheme = ThemeData(
     hoverColor: const Color.fromARGB(255, 138, 0, 122),
     elevation: 5,
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: colorScheme.secondary,
+      foregroundColor: colorScheme.background,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
+  ),
   textTheme: TextTheme(
+    displayLarge: TextStyle(
+      fontFamily: "Staatliches",
+      fontSize: 45,
+      color: colorScheme.primary,
+    ),
     displayMedium: const TextStyle(
       fontFamily: "Staatliches",
       fontSize: 40,
@@ -29,10 +43,17 @@ ThemeData appTheme = ThemeData(
     ),
     bodyMedium: TextStyle(
       fontFamily: "Rubik",
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
       color: colorScheme.onBackground,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: "Rubik",
+      fontSize: 18,
+      fontWeight: FontWeight.w900,
+      fontStyle: FontStyle.normal,
+      color: colorScheme.secondary,
     ),
   ),
 );
