@@ -3,6 +3,13 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/Vini-Coding/desafio)  
 Protechtor Gears é o seu aplicativo para filtragem de senhas, com ele você pode filtrar senhas fortes em uma lista, adicionar uma senha vendo em tempo real se ela atende ou não aos critérios de senha forte, editar e deletar senhas. Não perca tempo e se Proteja no mundo tech com o Protechtor Gears. 
 
+![WhatsApp-Video-2023-06-07-at-11 41 43](https://github.com/Vini-Coding/desafio/assets/89312086/9c9b25a7-ef4b-4b46-ac26-4a0e08cc07b8)
+![WhatsApp-Video-2023-06-07-at-11 55 51](https://github.com/Vini-Coding/desafio/assets/89312086/d6d784fe-b61a-470a-92e5-fdf47e8e332c)
+![WhatsApp-Video-2023-06-07-at-11 15 06](https://github.com/Vini-Coding/desafio/assets/89312086/4886596c-34c3-4f14-aaf3-a254b0cde5f5)
+![WhatsApp-Video-2023-06-07-at-12 03 12](https://github.com/Vini-Coding/desafio/assets/89312086/f1f93ba1-ee27-4163-a92c-090dfffb5d1b)
+![WhatsApp-Video-2023-06-07-at-11 34 11-_1_](https://github.com/Vini-Coding/desafio/assets/89312086/6b3152e0-7f6f-4a04-9cc0-ce3624be2702)
+
+
 ## Features
 - Filtragem de senhas Fortes e Fracas.
 - Conexão com API.
@@ -63,6 +70,9 @@ Eu sempre tinha o costume de usar o package introduction_screens para criar Tela
 - E então eu fui buscar no Youtube sobre e encontrei o seguinte vídeo: https://www.youtube.com/watch?v=c4dsvckUA1Q
 
 Nesse vídeo aprendi que é bem simples criar esse tipo de Widget se você utilizar um PageView.builder() e usar um PageController e um inteiro que representava o index da página. Criei então o meu próprio Widget de Page, que recebia apenas o conteúdo necessário nos parâmetros como título, caminho da imagem, e descrição. E como ter o controle do index e da interface me deu liberdade, fiz uma lógica para a última tela ser uma tela de "Get Started". Utilizei sharedPreferences para validar se era a primeira entrada do usuário para setar se as telas de introdução vão aparecer ou não para o usuário.
+
+![WhatsApp-Video-2023-06-07-at-11 41 43](https://github.com/Vini-Coding/desafio/assets/89312086/a5f7b6aa-b0a1-4cc2-b5f3-26b81f88e636)
+
 
 ### Home View
 Na HomeView, o meu primeiro desafio foi encontrar um Widget para o Filtro que eu queria desenvolver, e fazendo uma pesquisa no Google eu encontrei o Widget ToggleButtons()
