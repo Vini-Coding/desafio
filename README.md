@@ -122,4 +122,3 @@ Para Deleção, criei um Widget Pop-Up de confirmação pensando na experiência
 ## Próximos Passos
 - SnackBars de Feedback ao Usuário
 - Tratamento de Exceptions
-- Correção no App Icon
