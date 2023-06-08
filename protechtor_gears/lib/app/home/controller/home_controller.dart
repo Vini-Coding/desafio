@@ -19,6 +19,9 @@ class HomeController extends ChangeNotifier {
     } on HandledException catch (e) {
       error = e.toString();
       notifyListeners();
+    } catch (_) {
+      error = "Falha em receber os dados. Verifique sua conexão.";
+      notifyListeners();
     }
   }
 
@@ -57,24 +60,49 @@ class HomeController extends ChangeNotifier {
   }
 
   Future<void> addCredential(Credential credential) async {
-    Credential newCredential = await CredentialsService().post(credential);
-    _allCredentials?.add(newCredential);
-    notifyListeners();
+    try {
+      Credential newCredential = await CredentialsService().post(credential);
+      _allCredentials?.add(newCredential);
+      notifyListeners();
+    } on HandledException catch (e) {
+      error = e.toString();
+      notifyListeners();
+    } catch (_) {
+      error = "Falha em adicionar nova senha. Verifique sua Conexão.";
+      notifyListeners();
+    }
   }
 
   Future<void> editCredential({
     required Credential oldCredential,
     required Credential newCredential,
   }) async {
-    Credential editedCredential = await CredentialsService().put(newCredential);
-    int credentialIndex = _allCredentials!.indexOf(oldCredential);
-    _allCredentials![credentialIndex] = editedCredential;
-    notifyListeners();
+    try {
+      Credential editedCredential =
+          await CredentialsService().put(newCredential);
+      int credentialIndex = _allCredentials!.indexOf(oldCredential);
+      _allCredentials![credentialIndex] = editedCredential;
+      notifyListeners();
+    } on HandledException catch (e) {
+      error = e.toString();
+      notifyListeners();
+    } catch (_) {
+      error = "Falha em editar senha. Verifique sua conexão.";
+      notifyListeners();
+    }
   }
 
   Future<void> deleteCredential(Credential credential) async {
-    await CredentialsService().delete(credential.id!);
-    _allCredentials?.remove(credential);
-    notifyListeners();
+    try {
+      await CredentialsService().delete(credential.id!);
+      _allCredentials?.remove(credential);
+      notifyListeners();
+    } on HandledException catch (e) {
+      error = e.toString();
+      notifyListeners();
+    } catch (_) {
+      error = "Falha em deletar senha. Verifique sua conexão.";
+      notifyListeners();
+    }
   }
 }
