@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DeletePopUp extends StatefulWidget {
   const DeletePopUp({
@@ -67,6 +68,38 @@ class _DeletePopUpState extends State<DeletePopUp> {
                       onPressed: () {
                         widget.delete();
                         Navigator.of(context).pop();
+                        ScaffoldMessenger.of(context).showSnackBar(                     
+                          SnackBar(
+                            dismissDirection: DismissDirection.horizontal,
+                            content: Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: colorScheme.error,
+                              ),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10, right: 15),
+                                    child: FaIcon(
+                                      FontAwesomeIcons.circleExclamation,
+                                      color: colorScheme.background,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      "Senha ${widget.password} deletada com sucesso",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            behavior: SnackBarBehavior.fixed,
+                            elevation: 0,
+                            backgroundColor: Colors.transparent,
+                            
+                          ),
+                        );
                       },
                       child: Text(
                         "SIM",

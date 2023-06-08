@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:password_validator/app/home/enum/filter_list_by.dart';
 import 'package:password_validator/app/home/model/credential.dart';
 import 'package:password_validator/app/home/service/credentials_service.dart';
+import 'package:password_validator/app/shared/interfaces/handled_exception.dart';
 import 'package:password_validator/app/shared/utils/password_validation.dart';
 
 class HomeController extends ChangeNotifier {
   List<Credential>? _allCredentials;
   final List<bool> _isSelected = <bool>[true, false, false];
+  String? error;
 
   FilterListBy filterListBy = FilterListBy.allPasswords;
 
   Future<void> fetchPasswords() async {
-    _allCredentials = await CredentialsService().get();
-    notifyListeners();
+    try {
+      _allCredentials = await CredentialsService().get();
+      notifyListeners();
+    } on HandledException catch (e) {
+      error = e.toString();
+      notifyListeners();
+    }
   }
 
   List<Credential>? get filteredCredentials {

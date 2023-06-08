@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:password_validator/app/home/model/credential.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:password_validator/app/shared/exceptions/failed_request_exception.dart';
 import 'package:password_validator/app/shared/utils/credential_to_json.dart';
 
 String baseUrl =
@@ -17,7 +18,7 @@ class CredentialsService {
       var jsonData = response.body;
       return credentialsFromJson(jsonData);
     } else {
-      throw Exception();
+      throw FailedRequestException();
     }
   }
 
@@ -31,7 +32,7 @@ class CredentialsService {
       var jsonData = jsonDecode(response.body);
       return Credential.fromJson(jsonData);
     } else {
-      throw Exception();
+      throw FailedRequestException();
     }
   }
 
@@ -44,7 +45,7 @@ class CredentialsService {
       var jsonData = jsonDecode(response.body);
       return Credential.fromJson(jsonData);
     } else {
-      throw Exception();
+      throw FailedRequestException();
     }
   }
 
@@ -53,7 +54,7 @@ class CredentialsService {
 
     Response response = await client.delete(url);
     if (response.statusCode != 200) {
-      throw Exception();
+      throw FailedRequestException();
     }
   }
 }

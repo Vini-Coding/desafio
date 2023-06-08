@@ -8,6 +8,7 @@ class AddEditPopUpWidget extends StatefulWidget {
     required this.title,
     required this.buttonPrompt,
     required this.onDone,
+    required this.isAdd,
     this.password,
     super.key,
   });
@@ -15,6 +16,7 @@ class AddEditPopUpWidget extends StatefulWidget {
   final String buttonPrompt;
   final String? password;
   final Function(String password) onDone;
+  final bool isAdd;
 
   @override
   State<AddEditPopUpWidget> createState() => _AddEditPopUpWidgetState();
@@ -157,6 +159,45 @@ class _AddEditPopUpWidgetState extends State<AddEditPopUpWidget> {
                         onTap: () {
                           widget.onDone(controller.passwordTextController.text);
                           Navigator.of(context).pop();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              dismissDirection: DismissDirection.horizontal,
+                              content: Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: widget.isAdd
+                                      ? Colors.green
+                                      : colorScheme.secondary,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 20),
+                                      child: FaIcon(
+                                        widget.isAdd
+                                            ? FontAwesomeIcons.circlePlus
+                                            : FontAwesomeIcons.pencil,
+                                        color: colorScheme.background,
+                                      ),
+                                    ),
+                                    //const SizedBox(width: 15),
+                                    Expanded(
+                                      child: Text(
+                                        widget.isAdd
+                                            ? "Senha ${controller.passwordTextController.text} adicionada com sucesso"
+                                            : "Senha ${widget.password} alterada com sucesso",
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              behavior: SnackBarBehavior.fixed,
+                              elevation: 0,
+                              backgroundColor: Colors.transparent,
+                            ),
+                          );
                         },
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 300),

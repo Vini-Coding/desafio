@@ -30,6 +30,16 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    if (controller.error != null) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(controller.error!),
+          ),
+        );
+        controller.error = null;
+      });
+    }
     List<Credential>? filteredCredentials = controller.filteredCredentials;
     return Scaffold(
       appBar: AppBar(
@@ -57,6 +67,7 @@ class _HomeViewState extends State<HomeView> {
                   return AddEditPopUpWidget(
                     title: "ADICIONAR SENHA",
                     buttonPrompt: "ADICIONAR",
+                    isAdd: true,
                     onDone: (password) {
                       controller.addCredential(
                         Credential.fromPassword(password),
@@ -120,6 +131,7 @@ class _HomeViewState extends State<HomeView> {
                                   return AddEditPopUpWidget(
                                     title: "EDITAR SENHA",
                                     buttonPrompt: "EDITAR",
+                                    isAdd: false,
                                     password: credential.password,
                                     onDone: (password) {
                                       controller.editCredential(
