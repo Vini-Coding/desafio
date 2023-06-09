@@ -119,6 +119,17 @@ Para Deleção, criei um Widget Pop-Up de confirmação pensando na experiência
 
 ![WhatsApp-Video-2023-06-07-at-11 34 11-_1_](https://github.com/Vini-Coding/desafio/assets/89312086/364b3718-71ae-4098-9606-ed3e738b8783)
 
+## Tratando Exception
+Percebi que nos erros de conexão, o aplicativo simplesmente crashava, pedi um conselho para meu amigo pleno e ele recomendou usar uma estrutura try-catch. E foi o que fiz nas funções que utilizavam meus services, criei uma variável nullable de mensagens de erro, e quando caía uma exceção no Catch, essa variável recebia a mensagem, que era passada para uma Snackbar em uma verificação que fiz na build de minha HomeView. O resultado ficou esse para quando o usuário não estiver conectado:
+
+![WhatsApp-Video-2023-06-08-at-23 15 48](https://github.com/Vini-Coding/desafio/assets/89312086/449e5c04-cc8a-4b34-9371-646f351c72ec)
+
 ## Próximos Passos
-- SnackBars de Feedback ao Usuário
-- Tratamento de Exceptions
+- Em breve atualizações...
+
+## Links importantes
+-  [Clique aqui para baixar o APK](https://drive.google.com/drive/u/0/folders/11xzgb9SqmVj72JzES5GylaDy5r66eW4A)
+-  [Clique aqui para visualizar o Design da UI no Figma](https://www.figma.com/file/7mXSThN8tNtZtuvagSTAZQ/Athletic-Gears-Challenge---Password-Validator-App?type=design&node-id=1%3A2&t=POrHAOzA6sR99phE-1)
+-  [Clique aqui para acessar minha API](https://64790e0ba455e257fa62e151.mockapi.io/athleticGears/passwords)
+-  Em breve vídeo de Demonstração no Linkedin
+
