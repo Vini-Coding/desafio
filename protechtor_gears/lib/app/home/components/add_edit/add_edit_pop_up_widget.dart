@@ -182,7 +182,6 @@ class _AddEditPopUpWidgetState extends State<AddEditPopUpWidget> {
                                         color: colorScheme.background,
                                       ),
                                     ),
-                                    //const SizedBox(width: 15),
                                     Expanded(
                                       child: Text(
                                         widget.isAdd

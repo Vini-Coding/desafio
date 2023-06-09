@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:password_validator/app/home/enum/filter_list_by.dart';
 import 'package:password_validator/app/home/model/credential.dart';
 import 'package:password_validator/app/home/service/credentials_service.dart';
-import 'package:password_validator/app/shared/interfaces/handled_exception.dart';
 import 'package:password_validator/app/shared/utils/password_validation.dart';
 
 class HomeController extends ChangeNotifier {
   List<Credential>? _allCredentials;
   final List<bool> _isSelected = <bool>[true, false, false];
-  String? error;
+  String? requestErrorAlert;
 
   FilterListBy filterListBy = FilterListBy.allPasswords;
 
@@ -16,11 +15,8 @@ class HomeController extends ChangeNotifier {
     try {
       _allCredentials = await CredentialsService().get();
       notifyListeners();
-    } on HandledException catch (e) {
-      error = e.toString();
-      notifyListeners();
     } catch (_) {
-      error = "Falha em receber os dados. Verifique sua conexão.";
+      requestErrorAlert = "Falha em receber os dados. Verifique sua conexão.";
       notifyListeners();
     }
   }
@@ -64,11 +60,9 @@ class HomeController extends ChangeNotifier {
       Credential newCredential = await CredentialsService().post(credential);
       _allCredentials?.add(newCredential);
       notifyListeners();
-    } on HandledException catch (e) {
-      error = e.toString();
-      notifyListeners();
     } catch (_) {
-      error = "Falha em adicionar nova senha. Verifique sua Conexão.";
+      requestErrorAlert =
+          "Falha em adicionar nova senha. Verifique sua Conexão.";
       notifyListeners();
     }
   }
@@ -83,11 +77,8 @@ class HomeController extends ChangeNotifier {
       int credentialIndex = _allCredentials!.indexOf(oldCredential);
       _allCredentials![credentialIndex] = editedCredential;
       notifyListeners();
-    } on HandledException catch (e) {
-      error = e.toString();
-      notifyListeners();
     } catch (_) {
-      error = "Falha em editar senha. Verifique sua conexão.";
+      requestErrorAlert = "Falha em editar senha. Verifique sua conexão.";
       notifyListeners();
     }
   }
@@ -97,11 +88,8 @@ class HomeController extends ChangeNotifier {
       await CredentialsService().delete(credential.id!);
       _allCredentials?.remove(credential);
       notifyListeners();
-    } on HandledException catch (e) {
-      error = e.toString();
-      notifyListeners();
     } catch (_) {
-      error = "Falha em deletar senha. Verifique sua conexão.";
+      requestErrorAlert = "Falha em deletar senha. Verifique sua conexão.";
       notifyListeners();
     }
   }

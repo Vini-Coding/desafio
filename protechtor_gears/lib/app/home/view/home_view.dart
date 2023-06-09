@@ -30,14 +30,14 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.error != null) {
+    if (controller.requestErrorAlert != null) {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(controller.error!),
+            content: Text(controller.requestErrorAlert!),
           ),
         );
-        controller.error = null;
+        controller.requestErrorAlert = null;
       });
     }
     List<Credential>? filteredCredentials = controller.filteredCredentials;
