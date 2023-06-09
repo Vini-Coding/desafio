@@ -1,4 +1,7 @@
 ![logo](https://github.com/Vini-Coding/desafio/assets/89312086/16789b59-e75b-48e9-8466-df60123acbf5)
+
+Logo, Branding, e todo o Design da UI foram feitos com ou baseados em assets da Empresa [Athletic Gears](https://agsports.app/) que propôs o desafio
+
 # PROTECHTOR GEARS
 ![GitHub last commit](https://img.shields.io/github/last-commit/Vini-Coding/desafio)  
 Protechtor Gears é o seu aplicativo para filtragem de senhas, com ele você pode filtrar senhas fortes em uma lista, adicionar uma senha vendo em tempo real se ela atende ou não aos critérios de senha forte, editar e deletar senhas. Não perca tempo e se Proteja no mundo tech com o Protechtor Gears. 
